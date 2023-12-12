@@ -1,15 +1,8 @@
-﻿try
+﻿string userName;
+try
 {
-    using (var searcher = new System.Management.ManagementObjectSearcher("Select * from Win32_ComputerSystem"))
-    {
-        using (var items = searcher.Get())
-        {
-            foreach (var item in items)
-            {
-                Console.WriteLine(item);
-            }
-        }
-    }
+    userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+    Console.WriteLine(userName);
 }
 catch (Exception ex)
 {
